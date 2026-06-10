@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delega IA | Automatización de Agentes Operativos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #f6f8fb; color: #111; }
+    .hero { background: radial-gradient(circle at top left, #25d36633, transparent 35%), radial-gradient(circle at bottom right, #00c6ff22, transparent 35%), #f6f8fb; }
+    .glass-form { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero min-h-screen flex items-center p-8">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-block bg-[#e8fff0] text-[#159947] px-4 py-2 rounded-full font-bold mb-6">Tu agente listo en 1 hora</div>
+        <h1 class="text-6xl font-bold leading-tight mb-6">Gestiona todas tus tareas desde un chat.</h1>
+        <p class="text-xl text-gray-600 mb-8">No instales sistemas complejos. Delega IA transforma WhatsApp en tu centro de operaciones inteligente.</p>
+        <button onclick="document.getElementById('formulario-agente').scrollIntoView({ behavior: 'smooth' })" class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg transition">Solicitar mi Agente</button>
+      </div>
+      <div class="bg-white p-6 rounded-3xl shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" class="rounded-2xl" alt="Gestión inteligente">
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS Y ALCANCE -->
+  <section class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-16">Automatización Integral</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+          <i data-lucide="building" class="text-[#25D366] w-12 h-12 mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Gestión de Centros</h3>
+          <p class="text-gray-600">Nóminas, reportes distritales y logística unificada.</p>
+        </div>
+        <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+          <i data-lucide="brain" class="text-[#25D366] w-12 h-12 mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Psicología Escolar</h3>
+          <p class="text-gray-600">Seguimiento de expedientes clínicos y bitácoras.</p>
+        </div>
+        <div class="p-8 border rounded-3xl hover:shadow-lg transition">
+          <i data-lucide="users" class="text-[#25D366] w-12 h-12 mx-auto mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Comunidad Docente</h3>
+          <p class="text-gray-600">Planificaciones, asistencia y rendimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULARIO PROFESIONAL -->
+  <section id="formulario-agente" class="py-24 bg-[#0f172a] text-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="glass-form p-10 rounded-3xl text-gray-900">
+        
+        <!-- STEP 0 -->
+        <div id="step-0">
+          <h3 class="text-3xl font-bold text-center mb-10">¿Qué tipo de agente necesitas?</h3>
+          <div class="grid md:grid-cols-3 gap-4">
+            <button onclick="selectPerfil('Centro')" class="p-6 bg-gray-100 rounded-2xl hover:bg-[#25D366] hover:text-white transition font-bold">Centro Educativo</button>
+            <button onclick="selectPerfil('Docente')" class="p-6 bg-gray-100 rounded-2xl hover:bg-[#25D366] hover:text-white transition font-bold">Docente</button>
+            <button onclick="selectPerfil('Psicólogo')" class="p-6 bg-gray-100 rounded-2xl hover:bg-[#25D366] hover:text-white transition font-bold">Psicólogo</button>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div id="step-1" class="hidden">
+          <button onclick="goBack(0)" class="text-sm font-semibold mb-6 underline">← Volver</button>
+          <div class="space-y-4">
+            <input id="input-regional" placeholder="Regional" class="w-full p-4 border rounded-xl">
+            <input id="input-distrito" placeholder="Distrito" class="w-full p-4 border rounded-xl">
+            <input id="input-centro" placeholder="Nombre de la Institución" class="w-full p-4 border rounded-xl">
+            <div id="docente-fields" class="hidden space-y-4">
+              <input id="input-nivel" placeholder="Nivel Educativo" class="w-full p-4 border rounded-xl">
+              <input id="input-grado" placeholder="Grado Educativo" class="w-full p-4 border rounded-xl">
+              <input id="input-asignaturas" placeholder="Asignatura(s) que imparte" class="w-full p-4 border rounded-xl">
+            </div>
+            <button onclick="goToStep(2)" class="w-full bg-[#25D366] text-white font-bold py-4 rounded-xl">Siguiente paso</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step-2" class="hidden">
+          <button onclick="goBack(1)" class="text-sm font-semibold mb-6 underline">← Volver</button>
+          <input id="input-nombre" placeholder="Nombre completo" class="w-full p-4 border rounded-xl mb-4">
+          <input id="input-whatsapp" placeholder="Teléfono/WhatsApp" class="w-full p-4 border rounded-xl mb-4">
+          <button onclick="submitToWhatsApp()" class="w-full bg-[#25D366] text-white font-bold py-4 rounded-xl">Enviar solicitud a WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    lucide.createIcons();
+    let currentPerfil = '';
+    function selectPerfil(p) {
+      currentPerfil = p;
+      document.getElementById('docente-fields').style.display = (p === 'Docente') ? 'block' : 'none';
+      document.getElementById('step-0').classList.add('hidden');
+      document.getElementById('step-1').classList.remove('hidden');
+    }
+    function goToStep(s) {
+      document.getElementById('step-1').classList.add('hidden');
+      document.getElementById('step-2').classList.remove('hidden');
+    }
+    function goBack(s) {
+      if(s === 0) { document.getElementById('step-1').classList.add('hidden'); document.getElementById('step-0').classList.remove('hidden'); }
+      else { document.getElementById('step-2').classList.add('hidden'); document.getElementById('step-1').classList.remove('hidden'); }
+    }
+    function submitToWhatsApp() {
+      const d = {
+        n: document.getElementById('input-nombre').value,
+        w: document.getElementById('input-whatsapp').value,
+        c: document.getElementById('input-centro').value,
+        niv: document.getElementById('input-nivel') ? document.getElementById('input-nivel').value : '',
+        gra: document.getElementById('input-grado') ? document.getElementById('input-grado').value : '',
+        asi: document.getElementById('input-asignaturas') ? document.getElementById('input-asignaturas').value : ''
+      };
+      let msg = `Solicitud de Agente - Perfil: ${currentPerfil}\nInstitución: ${d.c}`;
+      if(currentPerfil === 'Docente') msg += `\nNivel: ${d.niv}\nGrado: ${d.gra}\nAsignaturas: ${d.asi}`;
+      msg += `\nNombre: ${d.n}\nWhatsApp: ${d.w}`;
+      window.open(`https://wa.me/18296469885?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
